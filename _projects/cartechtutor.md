@@ -1,5 +1,5 @@
 ---
-title: "CarTechTutor — AI Tools for Dealerships"
+title: "CarTechTutor"
 published: false
 status: demo
 shipped: 2026-06-01
