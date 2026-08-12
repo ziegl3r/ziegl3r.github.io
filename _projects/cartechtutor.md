@@ -1,5 +1,6 @@
 ---
 title: "CarTechTutor — AI Tools for Dealerships"
+published: false
 status: demo
 shipped: 2026-06-01
 hash: e91a03d

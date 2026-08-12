@@ -7,7 +7,7 @@ permalink: /portfolio/
   <h1 style="color: var(--accent-teal); margin-bottom: 0.5rem;">Shipped projects</h1>
 </div>
 
-{% assign projects = site.projects | sort: 'shipped' | reverse %}
+{% assign projects = site.projects | where: "published", true | sort: 'shipped' | reverse %}
 {% if projects.size > 0 %}
 <ul class="list">
   {% for project in projects %}
