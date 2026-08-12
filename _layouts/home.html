@@ -1,0 +1,59 @@
+---
+layout: default
+---
+<div class="hero">
+  <h1>Building toward Claude Certified Architect (CCA-F) and shipping AI tools for dealerships.</h1>
+  <p>Study notes, project builds, and working process — written in public. Every commit, every framework concept, and every shipped feature lands here first.</p>
+</div>
+
+<div class="intro-block">
+  {{ content }}
+</div>
+
+<div class="section-heading">
+  <h2>Recent posts</h2>
+  <a href="{{ '/blog/' | relative_url }}" class="see-all">view all →</a>
+</div>
+{% assign recent_posts = site.posts | slice: 0, 3 %}
+{% if recent_posts.size > 0 %}
+<ul class="list">
+  {% for post in recent_posts %}
+  <li class="list__entry">
+    <a href="{{ post.url | relative_url }}" class="list__link">
+      <div class="list__row">
+        <span class="list__hash">{{ post.hash | default: "0000000" }}</span>
+        <span class="list__date">{{ post.date | date: "%Y-%m-%d" }}</span>
+        <span class="list__title">{{ post.title }}</span>
+      </div>
+      {% if post.excerpt %}<p class="list__excerpt">{{ post.excerpt | strip_html | truncatewords: 20 }}</p>{% endif %}
+    </a>
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p class="empty-state">No posts yet — your first post in <code>_posts/</code> will show up here.</p>
+{% endif %}
+
+<div class="section-heading">
+  <h2>Shipped projects</h2>
+  <a href="{{ '/portfolio/' | relative_url }}" class="see-all">view all →</a>
+</div>
+{% assign recent_projects = site.projects | sort: 'shipped' | reverse | slice: 0, 2 %}
+{% if recent_projects.size > 0 %}
+<ul class="list">
+  {% for project in recent_projects %}
+  <li class="list__entry">
+    <a href="{{ project.url | relative_url }}" class="list__link">
+      <div class="list__row">
+        <span class="status-badge {% if project.status == 'demo' %}demo{% elsif project.status == 'wip' %}wip{% endif %}">[{{ project.status | default: "wip" }}]</span>
+        <span class="list__title">{{ project.title }}</span>
+        <span class="list__date">{{ project.shipped | default: "—" }}</span>
+      </div>
+      {% if project.summary %}<p class="list__excerpt">{{ project.summary }}</p>{% endif %}
+    </a>
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p class="empty-state">No projects yet — add one to <code>_projects/</code> to see it here.</p>
+{% endif %}

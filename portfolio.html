@@ -1,0 +1,29 @@
+---
+layout: default
+title: Portfolio
+permalink: /portfolio/
+---
+<div style="margin-bottom: 2rem;">
+  <h1 style="color: var(--accent-teal); margin-bottom: 0.5rem;">Shipped projects</h1>
+</div>
+
+{% assign projects = site.projects | sort: 'shipped' | reverse %}
+{% if projects.size > 0 %}
+<ul class="list">
+  {% for project in projects %}
+  <li class="list__entry">
+    <a href="{{ project.url | relative_url }}" class="list__link">
+      <div class="list__row">
+        <span class="status-badge {% if project.status == 'demo' %}demo{% elsif project.status == 'wip' %}wip{% endif %}">[{{ project.status | default: "wip" }}]</span>
+        <span class="list__title">{{ project.title }}</span>
+        <span class="list__date">{{ project.shipped | default: "—" }}</span>
+      </div>
+      {% if project.summary %}<p class="list__excerpt">{{ project.summary }}</p>{% endif %}
+      {% if project.stack %}<p class="stack-tags">stack: {{ project.stack | join: ", " }}</p>{% endif %}
+    </a>
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p class="empty-state">Nothing shipped yet — add a file to <code>_projects/</code> to see it here.</p>
+{% endif %}

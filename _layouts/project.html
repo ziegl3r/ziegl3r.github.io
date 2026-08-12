@@ -1,0 +1,30 @@
+---
+layout: default
+---
+<article>
+  <div class="article-meta">
+    <span class="status-badge {% if page.status == 'demo' %}demo{% elsif page.status == 'wip' %}wip{% endif %}">[{{ page.status | default: "wip" }}]</span>
+    · shipped {{ page.shipped | default: "—" }} · commit {{ page.hash | default: "0000000" }}
+  </div>
+  <h1 class="article-title">{{ page.title }}</h1>
+
+  {% if page.stack and page.stack.size > 0 %}
+  <div class="article-tags">
+    {% for tech in page.stack %}<span>{{ tech }}</span>{% endfor %}
+  </div>
+  {% endif %}
+
+  {% if page.url_live or page.url_repo %}
+  <p class="article-meta">
+    {% if page.url_live %}<a href="{{ page.url_live }}" target="_blank" rel="noopener">live</a>{% endif %}
+    {% if page.url_live and page.url_repo %} · {% endif %}
+    {% if page.url_repo %}<a href="{{ page.url_repo }}" target="_blank" rel="noopener">repo</a>{% endif %}
+  </p>
+  {% endif %}
+
+  <div class="article-body">
+    {{ content }}
+  </div>
+
+  <a href="{{ '/portfolio/' | relative_url }}" class="back-link">&larr; back to portfolio</a>
+</article>

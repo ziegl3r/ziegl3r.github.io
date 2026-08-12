@@ -1,0 +1,27 @@
+---
+layout: default
+title: Blog
+permalink: /blog/
+---
+<div style="margin-bottom: 2rem;">
+  <h1 style="color: var(--accent-teal); margin-bottom: 0.5rem;">Recent posts</h1>
+</div>
+
+{% if site.posts.size > 0 %}
+<ul class="list">
+  {% for post in site.posts %}
+  <li class="list__entry">
+    <a href="{{ post.url | relative_url }}" class="list__link">
+      <div class="list__row">
+        <span class="list__hash">{{ post.hash | default: "0000000" }}</span>
+        <span class="list__date">{{ post.date | date: "%Y-%m-%d" }}</span>
+        <span class="list__title">{{ post.title }}</span>
+      </div>
+      {% if post.excerpt %}<p class="list__excerpt">{{ post.excerpt | strip_html | truncatewords: 26 }}</p>{% endif %}
+    </a>
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p class="empty-state">No posts yet — drop a file in <code>_posts/</code> to get started.</p>
+{% endif %}

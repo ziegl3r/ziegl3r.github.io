@@ -1,0 +1,21 @@
+---
+layout: default
+---
+<article>
+  <div class="article-meta">
+    {{ page.date | date: "%Y-%m-%d" }} · commit {{ page.hash | default: "0000000" }}
+  </div>
+  <h1 class="article-title">{{ page.title }}</h1>
+
+  {% if page.tags and page.tags.size > 0 %}
+  <div class="article-tags">
+    {% for tag in page.tags %}<span>{{ tag }}</span>{% endfor %}
+  </div>
+  {% endif %}
+
+  <div class="article-body">
+    {{ content }}
+  </div>
+
+  <a href="{{ '/blog/' | relative_url }}" class="back-link">&larr; back to blog</a>
+</article>

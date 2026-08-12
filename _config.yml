@@ -1,0 +1,52 @@
+title: "cory@buildlog"
+tagline: "Build-in-public: CCA-F study notes + CarTechTutor builds"
+description: >-
+  A build-in-public log documenting the Claude Certified Architect – Foundations
+  (CCA-F) certification journey and shipping AI tools for automotive dealerships
+  with CarTechTutor — one commit at a time.
+author: Cory
+url: "" # e.g. https://yourusername.github.io  (set this after your repo is live)
+baseurl: "" # leave blank for a <username>.github.io user site; use "/repo-name" for a project site
+
+# --- content ---
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+excerpt_separator: "<!--more-->"
+permalink: /blog/:year/:month/:day/:title/
+
+collections:
+  projects:
+    output: true
+    permalink: /portfolio/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+  - scope:
+      path: ""
+      type: projects
+    values:
+      layout: project
+  - scope:
+      path: ""
+    values:
+      layout: default
+
+# --- plugins (all on the GitHub Pages safe list) ---
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# --- housekeeping ---
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - node_modules
+  - vendor
